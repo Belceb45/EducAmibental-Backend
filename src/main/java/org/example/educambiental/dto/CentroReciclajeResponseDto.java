@@ -1,0 +1,20 @@
+package org.example.educambiental.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class CentroReciclajeResponseDto {
+    private Long id;
+    private String nombre;
+    private Double latitud;
+    private Double longitud;
+    private String direccion;
+    private String horario;
+    private String contacto;
+}

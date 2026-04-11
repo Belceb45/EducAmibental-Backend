@@ -1,0 +1,22 @@
+package org.example.educambiental.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class MaterialRequestDto {
+    @NotBlank(message = "El nombre es obligatorio")
+    private String nombre;
+
+    private String instruccionesReciclaje;
+
+    @NotNull(message = "La categoría es obligatoria")
+    private Long idCategoria;
+}
