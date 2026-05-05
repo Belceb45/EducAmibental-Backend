@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "centros_reciclaje")
 @Data
@@ -25,4 +27,19 @@ public class CentroReciclaje {
     private String direccion;
     private String horario;
     private String contacto;
+
+    @Builder.Default
+    private Boolean capacidadLlena = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_admin")
+    private Usuario administrador;
+
+    @ManyToMany
+    @JoinTable(
+            name = "centro_materiales",
+            joinColumns = @JoinColumn(name = "id_centro"),
+            inverseJoinColumns = @JoinColumn(name = "id_categoria")
+    )
+    private List<CategoriaResiduo> materialesAceptados;
 }

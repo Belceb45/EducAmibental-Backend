@@ -40,6 +40,10 @@ public class Usuario implements UserDetails {
     @Builder.Default
     private Integer puntosActuales = 0;
 
+    @Column(name = "nivel_actual", nullable = false)
+    @Builder.Default
+    private Integer nivelActual = 1;
+
     @Column(nullable = false)
     @Builder.Default
     private String rol = "USER"; // "USER", "ADMIN"

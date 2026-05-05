@@ -9,30 +9,30 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "modulos_interactivos")
+@Table(name = "insignias")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ModuloInteractivo {
+public class Insignia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private String nombre;
 
     @Column(columnDefinition = "TEXT")
     private String descripcion;
 
-    @Column(name = "puntos_otorgados", nullable = false)
-    private Integer puntosOtorgados;
+    @Column(name = "icono_url")
+    private String iconoUrl;
 
     @ManyToMany
     @JoinTable(
-            name = "usuario_modulo",
-            joinColumns = @JoinColumn(name = "id_modulo"),
+            name = "usuario_insignia",
+            joinColumns = @JoinColumn(name = "id_insignia"),
             inverseJoinColumns = @JoinColumn(name = "id_usuario")
     )
-    private List<Usuario> usuariosCompletados;
+    private List<Usuario> usuariosConInsignia;
 }
