@@ -18,7 +18,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
-            @Valid @RequestBody UsuarioRequestDto request
+            @RequestBody UsuarioRequestDto request
     ) {
         return ResponseEntity.ok(service.register(request));
     }
@@ -28,5 +28,35 @@ public class AuthenticationController {
             @RequestBody AuthenticationRequest request
     ) {
         return ResponseEntity.ok(service.authenticate(request));
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<AuthenticationResponse> verify(
+            @RequestBody VerificationRequest request
+    ) {
+        return ResponseEntity.ok(service.verify(request));
+    }
+
+    @PostMapping("/google")
+    public ResponseEntity<AuthenticationResponse> googleAuth(
+            @RequestBody GoogleTokenRequest request
+    ) {
+        return ResponseEntity.ok(service.authenticateWithGoogle(request));
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(
+            @Valid @RequestBody ForgotPasswordRequest request
+    ) {
+        service.forgotPassword(request);
+        return ResponseEntity.ok("Código de recuperación enviado a tu correo.");
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(
+            @Valid @RequestBody ResetPasswordRequest request
+    ) {
+        service.resetPassword(request);
+        return ResponseEntity.ok("Contraseña restablecida exitosamente.");
     }
 }

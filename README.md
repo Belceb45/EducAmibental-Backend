@@ -16,7 +16,6 @@ EducAmbiental es una plataforma integral orientada a la educacion ambiental y el
 - Actualizacion en tiempo real de la capacidad operativa de los centros.
 
 ### Sistema de Gamificacion
-- Registro de entregas fisicas mediante validacion de check-in (codigos QR).
 - Acumulacion de puntos de experiencia (XP) por acciones ambientales.
 - Sistema de niveles, insignias y logros para incentivar la participacion.
 - Ranking comunitario para fomentar la competencia sana entre usuarios.

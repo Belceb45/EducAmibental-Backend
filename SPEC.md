@@ -20,7 +20,7 @@ La documentación detallada de los requerimientos se encuentra organizada por á
 
 ### Áreas Principales:
 - [Gestión de Usuarios y Seguridad](requirements/USUARIOS.md) (RF1 - RF5)
-- [Catálogo de Residuos e Instrucciones](requirements/CATALOGO.md) (RF6 - RF9)
+- [Catálogo de Residuos e Instrucciones](requirements/CATALOGO.md) (RF6 - RF9, RF23)
 - [Centros de Acopio y Geolocalización](requirements/CENTROS.md) (RF10 - RF12)
 - [Gamificación, Puntos e Impacto](requirements/GAMIFICACION.md) (RF13 - RF17)
 - [Comunicación y Administración Global](requirements/COMUNICACION_ADMIN.md) (RF18 - RF20)
@@ -46,7 +46,6 @@ La documentación detallada de los requerimientos se encuentra organizada por á
 - `CodigoDescuento`: Código único, estado, relación usuario/recompensa.
 - `HistorialPuntos`: Transacciones, motivo, fecha.
 - `Insignia`: Logros visuales para los usuarios.
-- `VisitaEntrega`: Registro de kilogramos entregados por usuario en un centro.
 - `ContenidoEstatico`: Título, cuerpo, tipo (Noticia/Info), autor.
 - `Notificacion`: Mensaje, estado de lectura, fecha.
 

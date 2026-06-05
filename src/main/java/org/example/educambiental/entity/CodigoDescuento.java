@@ -28,7 +28,7 @@ public class CodigoDescuento {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(50) default 'DISPONIBLE'")
     @Builder.Default
     private String estado = "DISPONIBLE"; // "DISPONIBLE" o "CANJEADO"
 }

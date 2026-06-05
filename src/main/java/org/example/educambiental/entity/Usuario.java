@@ -33,20 +33,47 @@ public class Usuario implements UserDetails {
     @Column(unique = true, nullable = false)
     private String correo;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
-    @Column(name = "puntos_actuales", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "varchar(50) default 'LOCAL'")
+    @Builder.Default
+    private AuthProvider provider = AuthProvider.LOCAL;
+
+    @Column(name = "puntos_actuales", nullable = false, columnDefinition = "integer default 0")
     @Builder.Default
     private Integer puntosActuales = 0;
 
-    @Column(name = "nivel_actual", nullable = false)
+    @Column(name = "nivel_actual", nullable = false, columnDefinition = "integer default 1")
     @Builder.Default
     private Integer nivelActual = 1;
 
     @Column(nullable = false)
     @Builder.Default
     private String rol = "USER"; // "USER", "ADMIN"
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CodigoDescuento> codigosDescuento;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistorialPuntos> historialPuntos;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notificacion> notificaciones;
+
+    @OneToMany(mappedBy = "autor")
+    private List<ContenidoEstatico> contenidosPublicados;
+
+    @ManyToMany(mappedBy = "usuariosCompletados")
+    private List<ModuloInteractivo> modulosCompletados;
+
+    @ManyToMany(mappedBy = "usuariosConInsignia")
+    private List<Insignia> insigniasGanadas;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private boolean enabled = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -75,6 +102,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }

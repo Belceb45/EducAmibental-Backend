@@ -8,13 +8,13 @@ Este directorio contiene la documentación detallada de los requerimientos funci
 Cuentas, autenticación, recuperación de contraseña y gestión de roles (Ciudadano, Admin de Centro, Admin de Sistema).
 
 ### 2. [Catálogo de Residuos](requirements/CATALOGO.md)
-Categorías, guías de disposición, búsqueda predictiva y gestión de contenido educativo.
+Categorías, guías de disposición, búsqueda predictiva, escaneo de códigos de barras (OpenFoodFacts) y gestión de contenido educativo.
 
 ### 3. [Centros de Acopio y Mapas](requirements/CENTROS.md)
 Geolocalización, detalles de centros y gestión de capacidad en tiempo real.
 
 ### 4. [Gamificación e Impacto](requirements/GAMIFICACION.md)
-Sistema de check-in (QR), cálculo de puntos XP, insignias y ranking comunitario.
+Cálculo de puntos XP, insignias y ranking comunitario.
 
 ### 5. [Administración y Comunicación](requirements/COMUNICACION_ADMIN.md)
 Notificaciones, métricas globales (toneladas recicladas) y gestión de contenido estático.

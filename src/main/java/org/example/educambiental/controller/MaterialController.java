@@ -31,4 +31,18 @@ public class MaterialController {
                 materialService.crearMaterial(materialMapper.toEntity(requestDto))
         );
     }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public MaterialResponseDto actualizarMaterial(@PathVariable Long id, @Valid @RequestBody MaterialRequestDto requestDto) {
+        return materialMapper.toResponseDto(
+                materialService.actualizarMaterial(id, materialMapper.toEntity(requestDto))
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void eliminarMaterial(@PathVariable Long id) {
+        materialService.eliminarMaterial(id);
+    }
 }

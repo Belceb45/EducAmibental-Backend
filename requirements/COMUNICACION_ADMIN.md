@@ -4,7 +4,10 @@
 |---|---|---|---|
 | **RF18** | Sistema de Notificaciones | Media | Envío de alertas, recordatorios, felicitaciones por logros y avisos de cierre de centros. |
 | **RF19** | Dashboard administrativo | Alta | Métricas globales para el Admin del Sistema: usuarios activos, toneladas recicladas, materiales más procesados. |
-| **RF20** | Gestión de contenido ampliada | Media | Interfaz para gestionar contenido estático (noticias, tips, FAQs) sin modificar código fuente. |
+| **RF20** | Gestión de contenido ampliada | Alta | Interfaz administrativa para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre Tips, Artículos y Guías Educativas. |
+| **RF21** | Gestión de Catálogo y Materiales | Alta | El Administrador puede gestionar el catálogo de materiales, sus instrucciones de reciclaje y categorías asociadas. |
+| **RF22** | Gestión de Recompensas y Stock | Alta | El Administrador puede crear recompensas, definir costos en puntos y gestionar el stock/códigos disponibles. |
+| **RF23** | Gestión de Centros de Acopio | Alta | Capacidad de crear, editar o eliminar centros de acopio manualmente, además de la sincronización automática. |
 
 ---
 

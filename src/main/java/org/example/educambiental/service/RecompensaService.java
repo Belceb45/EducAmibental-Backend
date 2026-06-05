@@ -34,6 +34,23 @@ public class RecompensaService {
         return recompensaRepository.save(recompensa);
     }
 
+    public Recompensa actualizarRecompensa(Long id, Recompensa detalles) {
+        Recompensa recompensa = recompensaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Recompensa no encontrada."));
+        recompensa.setTiendaFicticia(detalles.getTiendaFicticia());
+        recompensa.setDescripcion(detalles.getDescripcion());
+        recompensa.setCostoPuntos(detalles.getCostoPuntos());
+        recompensa.setStock(detalles.getStock());
+        return recompensaRepository.save(recompensa);
+    }
+
+    public void eliminarRecompensa(Long id) {
+        if (!recompensaRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Recompensa no encontrada.");
+        }
+        recompensaRepository.deleteById(id);
+    }
+
     @Transactional
     public CanjeResponseDto canjearRecompensa(UUID idUsuario, Long idRecompensa) {
         Usuario usuario = usuarioRepository.findById(idUsuario)

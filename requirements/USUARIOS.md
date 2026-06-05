@@ -7,12 +7,20 @@
 | **RF3** | Recuperación de Contraseña | Alta | El sistema permitirá al usuario recuperar el acceso a su cuenta mediante el envío de un enlace seguro o código de verificación al correo registrado. |
 | **RF4** | Gestión de Roles | Alta | El sistema debe gestionar diferentes niveles de acceso: Usuario Ciudadano, Administrador de Centro y Administrador del Sistema. |
 | **RF5** | Navegador de rutas | Alta | El sistema debe permitir la navegación fluida entre secciones, protegiendo las rutas privadas mediante validación de autenticación. |
+| **RF6** | Eliminación de Cuenta | Media | El sistema permitirá al usuario eliminar su propia cuenta de forma permanente. Esto borrará sus datos personales y registros asociados según las políticas de privacidad. |
 
 ---
 
 ### Detalles Técnicos
 
 #### RF1: Registro de Usuario
+... (resto del contenido) ...
+
+#### RF6: Eliminación de Cuenta
+- **Entrada:** Confirmación de eliminación por parte del usuario.
+- **Salida:** Cierre de sesión y eliminación de registros en la base de datos.
+- **Precondición:** El usuario debe estar autenticado.
+- **Postcondición:** El usuario ya no puede iniciar sesión con esas credenciales.
 - **Entrada:** Correo electrónico, contraseña, datos personales (nombre, etc.).
 - **Salida:** Confirmación de registro y envío de token o enlace de verificación al correo.
 - **Precondición:** Acceder a "Regístrate aquí".

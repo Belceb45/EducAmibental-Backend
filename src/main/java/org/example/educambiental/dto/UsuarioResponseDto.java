@@ -16,5 +16,7 @@ public class UsuarioResponseDto {
     private String nombre;
     private String correo;
     private Integer puntosActuales;
+    private Integer nivelActual;
+    private String provider;
     private String rol;
 }

@@ -26,6 +26,7 @@ public class Notificacion {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String mensaje;
 
+    @Column(columnDefinition = "boolean default false")
     @Builder.Default
     private Boolean leida = false;
 

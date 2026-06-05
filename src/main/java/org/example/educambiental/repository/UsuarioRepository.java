@@ -10,4 +10,5 @@ import java.util.UUID; // <-- Asegúrate de importar UUID
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, UUID> { // <-- Cambiar a UUID
     Optional<Usuario> findByCorreo(String correo);
+    boolean existsByCorreo(String correo);
 }

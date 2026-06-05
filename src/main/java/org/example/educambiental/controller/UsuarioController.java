@@ -44,9 +44,17 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{idUsuario}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or #idUsuario == authentication.principal.id")
     public ResponseEntity<String> eliminarUsuario(@PathVariable UUID idUsuario) {
         usuarioService.eliminarUsuario(idUsuario);
         return ResponseEntity.ok("Usuario eliminado exitosamente.");
+    }
+
+    @DeleteMapping("/mi-cuenta")
+    public ResponseEntity<String> eliminarMiCuenta(@RequestHeader("Authorization") String token) {
+        // En un escenario real, extraeríamos el ID del token JWT. 
+        // Para simplificar y alinearnos con la estructura actual:
+        usuarioService.eliminarUsuarioAutenticado();
+        return ResponseEntity.ok("Tu cuenta ha sido eliminada exitosamente.");
     }
 }

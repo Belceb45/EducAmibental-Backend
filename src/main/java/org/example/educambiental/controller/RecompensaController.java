@@ -35,6 +35,20 @@ public class RecompensaController {
         );
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public RecompensaResponseDto actualizarRecompensa(@PathVariable Long id, @Valid @RequestBody RecompensaRequestDto requestDto) {
+        return recompensaMapper.toResponseDto(
+                recompensaService.actualizarRecompensa(id, recompensaMapper.toEntity(requestDto))
+        );
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void eliminarRecompensa(@PathVariable Long id) {
+        recompensaService.eliminarRecompensa(id);
+    }
+
     @PostMapping("/canjear")
     public ResponseEntity<CanjeResponseDto> canjearRecompensa(@Valid @RequestBody CanjeRequestDto request) {
         CanjeResponseDto response = recompensaService.canjearRecompensa(request.getIdUsuario(), request.getIdRecompensa());

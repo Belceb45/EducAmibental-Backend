@@ -28,9 +28,11 @@ public class ContenidoEstatico {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String cuerpo;
 
+    private String autor;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_autor")
-    private Usuario autor;
+    private Usuario usuarioAutor;
 
     @Column(name = "fecha_publicacion")
     private LocalDateTime fechaPublicacion;

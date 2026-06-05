@@ -21,6 +21,21 @@ public class MaterialService {
         return materialRepository.save(material);
     }
 
+    public Material actualizarMaterial(Long id, Material detalles) {
+        Material material = obtenerPorId(id);
+        material.setNombre(detalles.getNombre());
+        material.setInstruccionesReciclaje(detalles.getInstruccionesReciclaje());
+        material.setCategoria(detalles.getCategoria());
+        return materialRepository.save(material);
+    }
+
+    public void eliminarMaterial(Long id) {
+        if (!materialRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Material no encontrado.");
+        }
+        materialRepository.deleteById(id);
+    }
+
     public Material obtenerPorId(Long id) {
         return materialRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Material no encontrado con ID: " + id));

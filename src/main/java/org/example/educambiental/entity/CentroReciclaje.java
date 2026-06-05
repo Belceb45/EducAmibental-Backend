@@ -28,6 +28,7 @@ public class CentroReciclaje {
     private String horario;
     private String contacto;
 
+    @Column(name = "capacidad_llena", columnDefinition = "boolean default false")
     @Builder.Default
     private Boolean capacidadLlena = false;
 

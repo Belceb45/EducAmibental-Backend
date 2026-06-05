@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.UUID;
 
 @Service
@@ -40,5 +41,14 @@ public class UsuarioService {
         }
 
         usuarioRepository.deleteById(idUsuarioAEliminar);
+    }
+
+    @Transactional
+    public void eliminarUsuarioAutenticado() {
+        String correo = SecurityContextHolder.getContext().getAuthentication().getName();
+        Usuario usuario = usuarioRepository.findByCorreo(correo)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario autenticado no encontrado."));
+        
+        usuarioRepository.delete(usuario);
     }
 }

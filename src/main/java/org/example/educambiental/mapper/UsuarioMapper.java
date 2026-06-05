@@ -12,6 +12,8 @@ public interface UsuarioMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "puntosActuales", ignore = true)
+    @Mapping(target = "nivelActual", ignore = true)
+    @Mapping(target = "provider", ignore = true)
     @Mapping(target = "rol", ignore = true)
     Usuario toEntity(UsuarioRequestDto requestDto);
 }
