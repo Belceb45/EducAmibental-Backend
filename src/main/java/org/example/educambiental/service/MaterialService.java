@@ -17,6 +17,10 @@ public class MaterialService {
         return materialRepository.findAll(pageable);
     }
 
+    public Page<Material> buscarPorNombre(String nombre, Pageable pageable) {
+        return materialRepository.findByNombreContainingIgnoreCase(nombre, pageable);
+    }
+
     public Material crearMaterial(Material material) {
         return materialRepository.save(material);
     }

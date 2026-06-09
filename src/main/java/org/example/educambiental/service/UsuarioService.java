@@ -1,15 +1,20 @@
 package org.example.educambiental.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.educambiental.dto.RankingEntryDto;
 import org.example.educambiental.entity.Usuario;
 import org.example.educambiental.exception.ResourceNotFoundException;
 import org.example.educambiental.repository.UsuarioRepository;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,6 +24,23 @@ public class UsuarioService {
 
     public Page<Usuario> listarTodos(Pageable pageable) {
         return usuarioRepository.findAll(pageable);
+    }
+
+    /** Ranking comunitario (RF17): top usuarios por puntos, con su posición. */
+    public List<RankingEntryDto> obtenerRanking(int top) {
+        List<Usuario> usuarios = usuarioRepository.findAllByOrderByPuntosActualesDesc(PageRequest.of(0, top));
+        List<RankingEntryDto> ranking = new ArrayList<>();
+        int posicion = 1;
+        for (Usuario u : usuarios) {
+            ranking.add(RankingEntryDto.builder()
+                    .posicion(posicion++)
+                    .idUsuario(u.getId())
+                    .nombre(u.getNombre())
+                    .puntosActuales(u.getPuntosActuales())
+                    .nivelActual(u.getNivelActual())
+                    .build());
+        }
+        return ranking;
     }
 
     public Usuario crearUsuario(Usuario usuario) {

@@ -13,5 +13,7 @@ public class ModuloInteractivoResponseDto {
     private Long id;
     private String titulo;
     private String descripcion;
+    private String contenido;
+    private String tipo;
     private Integer puntosOtorgados;
 }

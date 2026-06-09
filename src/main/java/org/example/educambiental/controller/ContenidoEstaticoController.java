@@ -36,7 +36,7 @@ public class ContenidoEstaticoController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public ResponseEntity<ContenidoResponseDto> crear(@Valid @RequestBody ContenidoRequestDto request) {
         ContenidoEstatico entity = ContenidoEstatico.builder()
                 .titulo(request.getTitulo())
@@ -48,7 +48,7 @@ public class ContenidoEstaticoController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public ResponseEntity<ContenidoResponseDto> actualizar(@PathVariable Long id, @Valid @RequestBody ContenidoRequestDto request) {
         ContenidoEstatico entity = ContenidoEstatico.builder()
                 .titulo(request.getTitulo())
@@ -60,7 +60,7 @@ public class ContenidoEstaticoController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         contenidoService.eliminarContenido(id);
         return ResponseEntity.noContent().build();

@@ -22,4 +22,6 @@ public class CentroReciclajeRequestDto {
 
     private String horario;
     private String contacto;
+    private String imagenUrl;
+    private String descripcion;
 }

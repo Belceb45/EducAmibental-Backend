@@ -13,4 +13,7 @@ public class CategoriaResiduoResponseDto {
     private Long id;
     private String nombre;
     private String descripcion;
+    private String instruccionesGenerales;
+    private String icono;
+    private String color;
 }

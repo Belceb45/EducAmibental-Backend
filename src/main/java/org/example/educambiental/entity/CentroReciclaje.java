@@ -27,14 +27,10 @@ public class CentroReciclaje {
     private String direccion;
     private String horario;
     private String contacto;
+    private String imagenUrl;
 
-    @Column(name = "capacidad_llena", columnDefinition = "boolean default false")
-    @Builder.Default
-    private Boolean capacidadLlena = false;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_admin")
-    private Usuario administrador;
+    @Column(columnDefinition = "TEXT")
+    private String descripcion;
 
     @ManyToMany
     @JoinTable(

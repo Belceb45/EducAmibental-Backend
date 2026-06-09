@@ -31,7 +31,7 @@ public class CdmxApiProvider implements CentroAcopioProvider {
             CdmxApiResponse response = webClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .queryParam("resource_id", RESOURCE_ID)
-                            .queryParam("limit", 50)
+                            .queryParam("limit", 1000)
                             .build())
                     .retrieve()
                     .bodyToMono(CdmxApiResponse.class)
@@ -62,10 +62,10 @@ public class CdmxApiProvider implements CentroAcopioProvider {
                 .nombre(record.getNombre())
                 .direccion(direccion)
                 .horario("Consultar en sitio") // La nueva API no provee horario
-                .contacto(record.getDescripcion() != null ? record.getDescripcion() : "No disponible")
+                .contacto("No disponible")
+                .descripcion(record.getDescripcion())
                 .latitud(record.getLatitud())
                 .longitud(record.getLongitud())
-                .capacidadLlena(false)
                 .build();
     }
 }

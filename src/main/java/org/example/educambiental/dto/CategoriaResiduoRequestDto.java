@@ -15,4 +15,7 @@ public class CategoriaResiduoRequestDto {
     private String nombre;
 
     private String descripcion;
+    private String instruccionesGenerales;
+    private String icono;
+    private String color;
 }

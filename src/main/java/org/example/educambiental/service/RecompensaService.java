@@ -25,6 +25,7 @@ public class RecompensaService {
     private final RecompensaRepository recompensaRepository;
     private final CodigoDescuentoRepository codigoDescuentoRepository;
     private final HistorialPuntosRepository historialPuntosRepository;
+    private final NotificacionService notificacionService;
 
     public Page<Recompensa> listarTodas(Pageable pageable) {
         return recompensaRepository.findAll(pageable);
@@ -83,6 +84,9 @@ public class RecompensaService {
                 .motivo("Canje de recompensa: " + recompensa.getDescripcion())
                 .build();
         historialPuntosRepository.save(historial);
+
+        notificacionService.crear(usuario,
+                "🎁 Canjeaste \"" + recompensa.getDescripcion() + "\". Tu código: " + codigo.getCodigoAlfanumerico());
 
         return CanjeResponseDto.builder()
                 .codigoAlfanumerico(codigo.getCodigoAlfanumerico())

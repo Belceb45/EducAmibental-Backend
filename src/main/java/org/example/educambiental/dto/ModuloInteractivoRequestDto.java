@@ -17,6 +17,8 @@ public class ModuloInteractivoRequestDto {
     private String titulo;
 
     private String descripcion;
+    private String contenido;
+    private String tipo;
 
     @NotNull(message = "Los puntos otorgados son obligatorios")
     @Min(value = 0, message = "Los puntos no pueden ser negativos")

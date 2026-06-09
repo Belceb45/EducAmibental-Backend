@@ -28,7 +28,7 @@ public class RecompensaController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public RecompensaResponseDto crearRecompensa(@Valid @RequestBody RecompensaRequestDto requestDto) {
         return recompensaMapper.toResponseDto(
                 recompensaService.crearRecompensa(recompensaMapper.toEntity(requestDto))
@@ -36,7 +36,7 @@ public class RecompensaController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public RecompensaResponseDto actualizarRecompensa(@PathVariable Long id, @Valid @RequestBody RecompensaRequestDto requestDto) {
         return recompensaMapper.toResponseDto(
                 recompensaService.actualizarRecompensa(id, recompensaMapper.toEntity(requestDto))
@@ -44,7 +44,7 @@ public class RecompensaController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public void eliminarRecompensa(@PathVariable Long id) {
         recompensaService.eliminarRecompensa(id);
     }

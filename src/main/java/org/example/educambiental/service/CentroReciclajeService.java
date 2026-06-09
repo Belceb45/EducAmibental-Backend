@@ -8,10 +8,8 @@ import org.example.educambiental.service.external.CentroAcopioProvider;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
 import org.example.educambiental.exception.ResourceNotFoundException;
+
 import java.util.List;
 
 @Service
@@ -62,7 +60,8 @@ public class CentroReciclajeService {
         centro.setDireccion(detalles.getDireccion());
         centro.setHorario(detalles.getHorario());
         centro.setContacto(detalles.getContacto());
-        centro.setCapacidadLlena(detalles.getCapacidadLlena());
+        centro.setImagenUrl(detalles.getImagenUrl());
+        centro.setDescripcion(detalles.getDescripcion());
         
         return repository.save(centro);
     }

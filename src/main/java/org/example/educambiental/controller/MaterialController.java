@@ -24,8 +24,13 @@ public class MaterialController {
         return materialService.listarTodos(pageable).map(materialMapper::toResponseDto);
     }
 
+    @GetMapping("/buscar")
+    public Page<MaterialResponseDto> buscarMateriales(@RequestParam String nombre, Pageable pageable) {
+        return materialService.buscarPorNombre(nombre, pageable).map(materialMapper::toResponseDto);
+    }
+
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public MaterialResponseDto crearMaterial(@Valid @RequestBody MaterialRequestDto requestDto) {
         return materialMapper.toResponseDto(
                 materialService.crearMaterial(materialMapper.toEntity(requestDto))
@@ -33,7 +38,7 @@ public class MaterialController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public MaterialResponseDto actualizarMaterial(@PathVariable Long id, @Valid @RequestBody MaterialRequestDto requestDto) {
         return materialMapper.toResponseDto(
                 materialService.actualizarMaterial(id, materialMapper.toEntity(requestDto))
@@ -41,7 +46,7 @@ public class MaterialController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_CONTENT')")
     public void eliminarMaterial(@PathVariable Long id) {
         materialService.eliminarMaterial(id);
     }

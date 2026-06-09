@@ -25,6 +25,11 @@ public class ModuloInteractivo {
     @Column(columnDefinition = "TEXT")
     private String descripcion;
 
+    @Column(columnDefinition = "TEXT")
+    private String contenido;
+
+    private String tipo; // "TRIVIA", "CURSO", "VIDEO", etc.
+
     @Column(name = "puntos_otorgados", nullable = false)
     private Integer puntosOtorgados;
 

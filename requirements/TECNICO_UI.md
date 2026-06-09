@@ -1,23 +1,22 @@
-# Aspectos Técnicos y Experiencia de Usuario (UI/UX)
+# Aspectos Técnicos y UI/UX (RF21 – RF22, RNF)
 
-## Requerimientos Funcionales de Interfaz y Offline
+| RF | Descripción | Implementación | Estado |
+|----|-------------|----------------|--------|
+| RF21 | Eliminación de cuenta | `DELETE /api/usuarios/mi-cuenta` + doble confirmación en la app | ✅ |
+| RF22 | Visualización offline | `useNetworkStatus` + `OfflineView` (cacheo de contenido crítico) | ✅ |
 
-| ID | Nombre | Prioridad | Descripción |
-|---|---|---|---|
-| **RF21** | Visualización offline básica | Media | Uso de caché local (Service Workers/IndexedDB) para consultar catálogo y mapa sin conexión. |
-| **RF22** | Navegación intermodular | Baja | Interfaz unificada con barra persistente o menú lateral para tránsito rápido entre módulos sin recargar página. |
+## Requerimientos No Funcionales
 
----
+| ID | Descripción | Implementación |
+|----|-------------|----------------|
+| RNF-01 | Interfaz intuitiva (UX/UI) | Componentes reutilizables, tema central (`constants/theme.ts`, `auth-styles.ts`) |
+| RNF-02 | Rendimiento | Marcadores de mapa memoizados; paginación en listados |
+| RNF-03 | Seguridad | BCrypt + Spring Security + JWT |
+| RNF-04 | Disponibilidad | Arquitectura sin estado (JWT) lista para escalar |
+| RNF-05 | Integridad de datos | Sincronización con CDMX y OpenFoodFacts |
+| RNF-06 | Escalabilidad | Arquitectura N-Tier modular (controladores/servicios/repos) |
+| RNF-07 | Mantenibilidad | DTOs + MapStruct + documentación (`POSTMAN_GUIDE.md`, `requirements/`) |
 
-## Requerimientos No Funcionales (RNF)
-
-| ID | Nombre | Descripción |
-|---|---|---|
-| **RNF-01** | Interfaz Intuitiva | Diseño amigable, claro e intuitivo para una interacción sencilla. |
-| **RNF-02** | Rendimiento | Consultas, búsquedas y visualización de datos en tiempos óptimos. |
-| **RNF-03** | Seguridad | Protección de información, cifrado de datos sensibles y control de accesos. |
-| **RNF-04** | Disponibilidad | Acceso continuo al sistema (24/7). |
-| **RNF-05** | Fiabilidad | Información precisa, constante y actualizada. |
-| **RNF-06** | Adaptabilidad | Diseño responsivo para diferentes dispositivos (Móvil, Tablet, Desktop). |
-| **RNF-07** | Escalabilidad | Capacidad para soportar incremento en usuarios e información. |
-| **RNF-08** | Mantenibilidad | Código modular, documentado y basado en buenas prácticas. |
+## Stack
+- **Backend:** Java 21, Spring Boot 3.2, PostgreSQL, Flyway, MapStruct, JWT.
+- **App:** Expo / React Native, TypeScript, expo-router, i18next.

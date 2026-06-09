@@ -40,7 +40,7 @@ La documentación detallada de los requerimientos se encuentra organizada por á
 ## 5. Modelo de Datos (Entidades Principales)
 - `Usuario`: ID (UUID), nombre, correo, password, puntos, rol, nivel actual.
 - `Material`: Nombre, instrucciones, categoría.
-- `CentroReciclaje`: Ubicación, contacto, horarios, administrador (Usuario), capacidad (estado).
+- `CentroReciclaje`: Ubicación, contacto, horarios y materiales aceptados.
 - `ModuloInteractivo`: Título, descripción, puntos otorgados, usuarios que lo completaron.
 - `Recompensa`: Descripción, costo en puntos, stock.
 - `CodigoDescuento`: Código único, estado, relación usuario/recompensa.
@@ -48,6 +48,15 @@ La documentación detallada de los requerimientos se encuentra organizada por á
 - `Insignia`: Logros visuales para los usuarios.
 - `ContenidoEstatico`: Título, cuerpo, tipo (Noticia/Info), autor.
 - `Notificacion`: Mensaje, estado de lectura, fecha.
+
+## 6. Estrategia de Gamificación
+- **XP puro:** El impacto del usuario se mide exclusivamente con XP, nivel e insignias (sin métricas físicas estimadas). Cada nivel requiere **1000 XP** (`nivel = puntos / 1000 + 1`).
+- **Fuente de XP:** Completar Módulos Interactivos (`POST /api/usuarios/{id}/completar-actividad/{idModulo}`), operación idempotente.
+- **Efectos automáticos:** al ganar XP se actualiza el nivel, se registra `HistorialPuntos`, se crea una `Notificacion` y se evalúan/otorgan `Insignia`s.
+- **Entidades activas:** `Notificacion` e `Insignia` están totalmente integradas (repositorio, servicio, controlador y endpoints). Ver `POSTMAN_GUIDE.md` §7B.
+
+## 7. Alcance de Clientes
+- La **app móvil** está enfocada al **ciudadano**. Las funciones de administración (RF12 Tickets, RF13 Contenido, RF19 Dashboard) se exponen vía API REST y se operan con Postman u otro cliente; no hay pantallas admin en la app móvil.
 
 ---
 *Este documento sirve como guía para el desarrollo basado en especificaciones (Spec Driven Development) de EducAmbiental.*

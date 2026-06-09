@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -45,18 +47,18 @@ public class AuthenticationController {
     }
 
     @PostMapping("/forgot-password")
-    public ResponseEntity<String> forgotPassword(
+    public ResponseEntity<Map<String, String>> forgotPassword(
             @Valid @RequestBody ForgotPasswordRequest request
     ) {
         service.forgotPassword(request);
-        return ResponseEntity.ok("Código de recuperación enviado a tu correo.");
+        return ResponseEntity.ok(Map.of("message", "Código de recuperación enviado a tu correo."));
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(
+    public ResponseEntity<Map<String, String>> resetPassword(
             @Valid @RequestBody ResetPasswordRequest request
     ) {
         service.resetPassword(request);
-        return ResponseEntity.ok("Contraseña restablecida exitosamente.");
+        return ResponseEntity.ok(Map.of("message", "Contraseña restablecida exitosamente."));
     }
 }

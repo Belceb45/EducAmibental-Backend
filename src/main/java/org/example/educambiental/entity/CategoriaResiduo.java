@@ -21,4 +21,10 @@ public class CategoriaResiduo {
     private String nombre;
 
     private String descripcion;
+
+    @Column(name = "instrucciones_generales", columnDefinition = "TEXT")
+    private String instruccionesGenerales;
+
+    private String icono;
+    private String color;
 }

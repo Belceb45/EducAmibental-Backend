@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CentroReciclajeRepository extends JpaRepository<CentroReciclaje, Long> {
     boolean existsByNombreAndLatitudAndLongitud(String nombre, Double latitud, Double longitud);
+    boolean existsByNombreAndDireccion(String nombre, String direccion);
 }

@@ -51,7 +51,7 @@ public class Usuario implements UserDetails {
 
     @Column(nullable = false)
     @Builder.Default
-    private String rol = "USER"; // "USER", "ADMIN"
+    private String rol = "USER"; // "USER", "ADMIN_SYSTEM", "ADMIN_CONTENT"
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CodigoDescuento> codigosDescuento;

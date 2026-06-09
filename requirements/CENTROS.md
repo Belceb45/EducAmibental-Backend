@@ -1,19 +1,16 @@
-# Centros de Acopio y Geolocalización
+# Centros de Acopio y Geolocalización (RF10 – RF12)
 
-| ID | Nombre | Prioridad | Descripción |
-|---|---|---|---|
-| **RF10** | Mapa interactivo | Alta | Mostrar un mapa con la ubicación de centros de reciclaje cercanos utilizando el GPS del usuario. |
-| **RF11** | Detalle de Centro de Acopio | Alta | Ficha informativa con dirección, horarios, contacto y lista de materiales aceptados. |
-| **RF12** | Gestión de perfil de Centro | Media | Permite al Administrador de Centro actualizar horarios, contacto y marcar estado de capacidad (contenedores llenos). |
+Localización de centros de reciclaje y soporte al usuario.
 
----
+| RF | Descripción | Endpoints / Implementación | Estado |
+|----|-------------|----------------------------|--------|
+| RF10 | Mapa interactivo de centros (sync CDMX) | `GET /api/centros`, `POST /api/centros/sincronizar` | ✅ |
+| RF11 | Detalle de centro (contacto, materiales) | `CentroReciclajeResponseDto` (lat/lon, dirección, horario, descripción, imagenUrl) | ✅ |
+| RF12 | Gestión de Tickets de soporte | `POST /api/tickets/usuario/{id}`, `GET /api/tickets`, `PATCH /api/tickets/{id}/asignar/{idAdmin}`, `PATCH /api/tickets/{id}/estado` | ✅ (backend) |
 
-### Detalles Técnicos
+**Importación / Sincronización (ADMIN_SYSTEM)**
+- `POST /api/centros/sincronizar`: API CKAN de Datos Abiertos CDMX.
+- `POST /api/centros/importar-csv`: CSV local con geocodificación OSM.
 
-#### RF10: Mapa interactivo
-- **Entrada:** Ubicación GPS del usuario.
-- **Salida:** Mapa con marcadores de centros cercanos.
-- **Precondición:** Permisos de ubicación otorgados.
-
-#### RF12: Gestión de capacidad
-- **Impacto:** Los cambios en el estado de capacidad se reflejan en tiempo real para todos los usuarios ciudadanos en el mapa.
+**Notas**
+- RF12 (Tickets) se gestiona desde el backend/Postman (rol `ADMIN_SYSTEM`); la app permite al ciudadano reportar.

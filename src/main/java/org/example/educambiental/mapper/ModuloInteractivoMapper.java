@@ -7,9 +7,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface ModuloInteractivoMapper {
-    ModuloInteractivoResponseDto toResponseDto(ModuloInteractivo moduloInteractivo);
+public abstract class ModuloInteractivoMapper {
+    public abstract ModuloInteractivoResponseDto toResponseDto(ModuloInteractivo moduloInteractivo);
 
     @Mapping(target = "id", ignore = true)
-    ModuloInteractivo toEntity(ModuloInteractivoRequestDto requestDto);
+    public abstract ModuloInteractivo toEntity(ModuloInteractivoRequestDto requestDto);
 }
