@@ -17,6 +17,8 @@ public class MaterialRequestDto {
 
     private String instruccionesReciclaje;
 
+    private String imagenUrl;
+
     @NotNull(message = "La categoría es obligatoria")
     private Long idCategoria;
 }

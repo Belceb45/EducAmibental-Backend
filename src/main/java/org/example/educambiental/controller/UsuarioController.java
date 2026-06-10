@@ -1,6 +1,7 @@
 package org.example.educambiental.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.educambiental.dto.CrearAdminRequestDto;
 import org.example.educambiental.dto.ImpactoResponseDto;
 import org.example.educambiental.dto.RankingEntryDto;
 import org.example.educambiental.dto.UsuarioRequestDto;
@@ -39,6 +40,20 @@ public class UsuarioController {
     public UsuarioResponseDto crearUsuario(@Valid @RequestBody UsuarioRequestDto requestDto) {
         return usuarioMapper.toResponseDto(
                 usuarioService.crearUsuario(usuarioMapper.toEntity(requestDto))
+        );
+    }
+
+    /** Permite a un Admin de Sistema crear cuentas de administrador (RF4). */
+    @PostMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN_SYSTEM')")
+    public UsuarioResponseDto crearAdmin(@Valid @RequestBody CrearAdminRequestDto requestDto) {
+        return usuarioMapper.toResponseDto(
+                usuarioService.crearAdmin(
+                        requestDto.getNombre(),
+                        requestDto.getCorreo(),
+                        requestDto.getPassword(),
+                        requestDto.getRol()
+                )
         );
     }
 

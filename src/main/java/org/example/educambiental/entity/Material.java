@@ -23,6 +23,9 @@ public class Material {
     @Column(name = "instrucciones_reciclaje", columnDefinition = "TEXT")
     private String instruccionesReciclaje;
 
+    @Column(name = "imagen_url", columnDefinition = "TEXT")
+    private String imagenUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria")
     private CategoriaResiduo categoria;

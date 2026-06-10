@@ -13,5 +13,6 @@ public class MaterialResponseDto {
     private Long id;
     private String nombre;
     private String instruccionesReciclaje;
+    private String imagenUrl;
     private CategoriaResiduoResponseDto categoria;
 }

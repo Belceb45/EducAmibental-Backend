@@ -29,6 +29,7 @@ public class MaterialService {
         Material material = obtenerPorId(id);
         material.setNombre(detalles.getNombre());
         material.setInstruccionesReciclaje(detalles.getInstruccionesReciclaje());
+        material.setImagenUrl(detalles.getImagenUrl());
         material.setCategoria(detalles.getCategoria());
         return materialRepository.save(material);
     }

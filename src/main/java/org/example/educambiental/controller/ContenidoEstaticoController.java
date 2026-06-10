@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.example.educambiental.dto.ContenidoRequestDto;
 import org.example.educambiental.entity.ContenidoEstatico;
+import org.example.educambiental.entity.CategoriaResiduo;
+import org.example.educambiental.repository.CategoriaResiduoRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
@@ -23,6 +25,7 @@ import java.util.List;
 public class ContenidoEstaticoController {
 
     private final ContenidoEstaticoService contenidoService;
+    private final CategoriaResiduoRepository categoriaRepository;
 
     @GetMapping("/tipo/{tipo}")
     public ResponseEntity<List<ContenidoResponseDto>> getPorTipo(@PathVariable String tipo) {
@@ -43,6 +46,7 @@ public class ContenidoEstaticoController {
                 .cuerpo(request.getCuerpo())
                 .tipo(request.getTipo())
                 .autor(request.getAutor())
+                .categoria(resolverCategoria(request.getIdCategoria()))
                 .build();
         return ResponseEntity.ok(contenidoService.crearContenido(entity));
     }
@@ -55,8 +59,14 @@ public class ContenidoEstaticoController {
                 .cuerpo(request.getCuerpo())
                 .tipo(request.getTipo())
                 .autor(request.getAutor())
+                .categoria(resolverCategoria(request.getIdCategoria()))
                 .build();
         return ResponseEntity.ok(contenidoService.actualizarContenido(id, entity));
+    }
+
+    private CategoriaResiduo resolverCategoria(Long idCategoria) {
+        if (idCategoria == null) return null;
+        return categoriaRepository.findById(idCategoria).orElse(null);
     }
 
     @DeleteMapping("/{id}")

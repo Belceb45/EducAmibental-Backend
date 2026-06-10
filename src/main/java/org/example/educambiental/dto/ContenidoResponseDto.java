@@ -11,5 +11,7 @@ public class ContenidoResponseDto {
     private String cuerpo;
     private String tipo; // TIP, ARTICULO, GUIA
     private String autor;
+    private Long idCategoria;
+    private String categoria;
     private String imagenUrl;
 }

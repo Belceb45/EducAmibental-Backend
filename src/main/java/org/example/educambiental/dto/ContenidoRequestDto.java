@@ -13,6 +13,9 @@ public class ContenidoRequestDto {
     
     @NotBlank
     private String tipo; // TIP, ARTICULO, GUIA
-    
+
     private String autor;
+
+    // Categoría de residuo asociada (opcional). Para guías define la imagen mostrada.
+    private Long idCategoria;
 }

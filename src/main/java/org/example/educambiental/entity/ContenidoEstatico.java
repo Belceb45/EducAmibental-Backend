@@ -34,6 +34,12 @@ public class ContenidoEstatico {
     @JoinColumn(name = "id_autor")
     private Usuario usuarioAutor;
 
+    // Categoría de residuo asociada (sobre todo para guías). Determina la imagen
+    // alusiva que se muestra en la app, tomada de un material de esta categoría.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private CategoriaResiduo categoria;
+
     @Column(name = "fecha_publicacion")
     private LocalDateTime fechaPublicacion;
 }
