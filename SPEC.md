@@ -4,7 +4,15 @@
 EducAmbiental es una plataforma diseñada para fomentar la educación ambiental y el reciclaje a través de un sistema de gamificación. Los usuarios pueden aprender sobre materiales reciclables, localizar centros de reciclaje, completar módulos interactivos para ganar puntos y canjear dichos puntos por recompensas y códigos de descuento.
 
 ## 2. Arquitectura del Sistema
-El proyecto sigue una arquitectura de n-capas (N-Tier Layered Architecture) utilizando el framework **Spring Boot**.
+El sistema se compone de **tres proyectos** que comparten una sola API REST:
+
+| Proyecto | Tecnología | Rol |
+|----------|-----------|-----|
+| `EducAmibental-Backend` | Spring Boot (Java 21) | API REST, lógica de negocio y persistencia |
+| `Educ_Ambiental` | Expo / React Native (TypeScript) | App móvil del ciudadano |
+| `EducAmbientalAdmin` | React + Vite (JavaScript) | Panel web de administración (RF23) |
+
+El backend sigue una arquitectura de n-capas (N-Tier Layered Architecture) utilizando el framework **Spring Boot**.
 
 ### Capas:
 - **Controladores (REST API):** Gestionan las solicitudes HTTP y definen los endpoints.
@@ -19,12 +27,12 @@ El proyecto sigue una arquitectura de n-capas (N-Tier Layered Architecture) util
 La documentación detallada de los requerimientos se encuentra organizada por áreas en el directorio `requirements/`. Puedes consultar el índice principal en [REQUIREMENTS.md](REQUIREMENTS.md).
 
 ### Áreas Principales:
-- [Gestión de Usuarios y Seguridad](requirements/USUARIOS.md) (RF1 - RF5)
-- [Catálogo de Residuos e Instrucciones](requirements/CATALOGO.md) (RF6 - RF9, RF23)
-- [Centros de Acopio y Geolocalización](requirements/CENTROS.md) (RF10 - RF12)
+- [Gestión de Usuarios y Seguridad](requirements/USUARIOS.md) (RF1 - RF5, RF21)
+- [Catálogo de Residuos e Instrucciones](requirements/CATALOGO.md) (RF6 - RF9)
+- [Centros de Acopio y Geolocalización](requirements/CENTROS.md) (RF10 - RF12, RF24)
 - [Gamificación, Puntos e Impacto](requirements/GAMIFICACION.md) (RF13 - RF17)
-- [Comunicación y Administración Global](requirements/COMUNICACION_ADMIN.md) (RF18 - RF20)
-- [Aspectos Técnicos y UI/UX](requirements/TECNICO_UI.md) (RF21 - RF22, RNF1 - RNF8)
+- [Comunicación y Administración Global](requirements/COMUNICACION_ADMIN.md) (RF18 - RF20, RF23)
+- [Aspectos Técnicos y UI/UX](requirements/TECNICO_UI.md) (RF21 - RF22, RF25 - RF27, RNF1 - RNF7)
 
 ## 4. Stack Tecnológico
 - **Lenguaje:** Java 21
@@ -56,7 +64,9 @@ La documentación detallada de los requerimientos se encuentra organizada por á
 - **Entidades activas:** `Notificacion` e `Insignia` están totalmente integradas (repositorio, servicio, controlador y endpoints). Ver `POSTMAN_GUIDE.md` §7B.
 
 ## 7. Alcance de Clientes
-- La **app móvil** está enfocada al **ciudadano**. Las funciones de administración (RF12 Tickets, RF13 Contenido, RF19 Dashboard) se exponen vía API REST y se operan con Postman u otro cliente; no hay pantallas admin en la app móvil.
+- La **app móvil** está enfocada al **ciudadano**: catálogo, escáner, mapa (centros propios + puntos OSM, RF24), gamificación, notificaciones, modo offline, i18n ES/EN y tema claro/oscuro (RF25).
+- El **Panel de Administración Web** (`EducAmbientalAdmin`, RF23) cubre las funciones administrativas: RF12 (Tickets), RF13 (Contenido/Módulos), RF19 (Dashboard), además de Usuarios, Centros, Materiales, Categorías y Recompensas. El login del panel solo acepta cuentas `ADMIN_SYSTEM` / `ADMIN_CONTENT` y las secciones visibles dependen del rol.
+- Postman sigue disponible como cliente alternativo de la API (ver `POSTMAN_GUIDE.md`).
 
 ---
 *Este documento sirve como guía para el desarrollo basado en especificaciones (Spec Driven Development) de EducAmbiental.*

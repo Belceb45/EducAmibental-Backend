@@ -1,4 +1,4 @@
-# Usuarios y Seguridad (RF1 – RF5)
+# Usuarios y Seguridad (RF1 – RF5, RF21)
 
 Gestión de cuentas, autenticación y control de acceso.
 
@@ -14,3 +14,5 @@ Gestión de cuentas, autenticación y control de acceso.
 **Notas**
 - Las contraseñas se cifran con BCrypt (RNF-03).
 - El registro crea la cuenta deshabilitada (`enabled=false`) hasta verificar el correo.
+- Google Sign-In requiere el módulo nativo (development build); en Expo Go la app degrada con aviso, sin crashear.
+- El login del Panel de Administración Web (RF23) rechaza cuentas `USER`; la gestión de usuarios (listar/eliminar) se hace desde su sección Usuarios.

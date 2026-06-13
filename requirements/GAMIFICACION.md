@@ -4,11 +4,11 @@ Aprendizaje gamificado con XP puro: nivel e insignias.
 
 | RF | Descripción | Endpoints / Implementación | Estado |
 |----|-------------|----------------------------|--------|
-| RF13 | Gestión de Módulos/Trivias/Tips | `GET /api/modulos-educativos`, CRUD (ADMIN_CONTENT) | ✅ |
+| RF13 | Gestión de Módulos/Trivias/Tips | `GET /api/modulos-educativos`, CRUD (ADMIN_CONTENT) vía Panel Admin (secciones Contenido, Módulos y Recompensas) | ✅ |
 | RF14 | XP por completar actividades | `POST /api/usuarios/{id}/completar-actividad/{idModulo}` (idempotente) | ✅ |
 | RF15 | Panel de impacto (nivel, insignias, puntos) | `GET /api/usuarios/{id}/impacto`, `GET /api/insignias/usuario/{id}` | ✅ |
 | RF16 | Sistema de recompensas (canje) | `GET /api/recompensas`, `POST /api/recompensas/canjear` | ✅ |
-| RF17 | Ranking comunitario | `GET /api/usuarios/ranking` | ✅ |
+| RF17 | Ranking comunitario | `GET /api/usuarios/ranking` — solo cuentas `USER` (los roles administrativos no compiten) | ✅ |
 
 **Modelo de niveles**
 - `nivel = puntosAcumulados / 1000 + 1` (constante `XP_POR_NIVEL = 1000`).

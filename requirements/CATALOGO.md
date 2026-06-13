@@ -11,6 +11,7 @@ Catálogo de materiales, guías de disposición y escaneo de productos.
 
 **Gestión de contenido (ADMIN_CONTENT)**
 - `POST/PUT/DELETE /api/materiales` y `/api/categorias`.
+- CRUD disponible en el Panel de Administración Web (RF23), secciones Materiales y Categorías.
 
 **Notas**
 - El escáner consulta OpenFoodFacts y mapea materiales a instrucciones sugeridas.

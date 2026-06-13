@@ -20,16 +20,16 @@ EducAmbiental es una plataforma integral orientada a la educacion ambiental y el
 - Sistema de niveles (1000 XP por nivel) e insignias que se otorgan automaticamente.
 - Ranking comunitario y panel de impacto (`/api/usuarios/{id}/impacto`).
 
-### Administracion y Metricas (via API / Postman)
-- Gestion de contenidos, materiales, recompensas, modulos y tickets mediante roles `ADMIN_CONTENT` / `ADMIN_SYSTEM`.
+### Administracion y Metricas (Panel de Administracion Web)
+- Panel web dedicado (`EducAmbientalAdmin`, React + Vite) con CRUD de contenidos, materiales, categorias, recompensas, modulos, tickets, usuarios y centros segun rol `ADMIN_CONTENT` / `ADMIN_SYSTEM`.
 - Dashboard administrativo (`/api/dashboard/admin`): usuarios, centros, materiales, contenidos y tickets por estado.
-- Notificaciones internas automaticas (XP, nivel, insignias, canjes). La app movil es ciudadano-only.
+- Notificaciones internas automaticas (XP, nivel, insignias, canjes). La app movil es ciudadano-only; Postman sigue disponible como cliente alternativo de la API.
 
 ### Experiencia Tecnica
-- Arquitectura escalable basada en microservicios o n-capas segun la implementacion.
-- Seguridad robusta mediante autenticacion basada en tokens (JWT) y roles de usuario.
-- Diseño responsivo adaptable a dispositivos moviles y de escritorio.
-- Soporte para visualizacion offline de datos criticos.
+- Arquitectura n-capas (controladores, servicios, repositorios, DTOs/MapStruct).
+- Seguridad robusta mediante autenticacion basada en tokens (JWT) y roles de usuario (`@PreAuthorize`).
+- Tres clientes sobre la misma API: app movil (ciudadano), panel web (administradores) y Postman.
+- Soporte para visualizacion offline de datos criticos en la app movil.
 
 ## Stack Tecnologico
 - Lenguaje: Java 21

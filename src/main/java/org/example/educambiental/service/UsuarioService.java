@@ -32,9 +32,9 @@ public class UsuarioService {
         return usuarioRepository.findAll(pageable);
     }
 
-    /** Ranking comunitario (RF17): top usuarios por puntos, con su posición. */
+    /** Ranking comunitario (RF17): top ciudadanos por puntos, con su posición. Las cuentas administrativas no compiten. */
     public List<RankingEntryDto> obtenerRanking(int top) {
-        List<Usuario> usuarios = usuarioRepository.findAllByOrderByPuntosActualesDesc(PageRequest.of(0, top));
+        List<Usuario> usuarios = usuarioRepository.findAllByRolOrderByPuntosActualesDesc("USER", PageRequest.of(0, top));
         List<RankingEntryDto> ranking = new ArrayList<>();
         int posicion = 1;
         for (Usuario u : usuarios) {

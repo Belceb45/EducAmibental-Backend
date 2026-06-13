@@ -14,8 +14,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> { // <--
     Optional<Usuario> findByCorreo(String correo);
     boolean existsByCorreo(String correo);
 
-    /** Ranking comunitario (RF17): usuarios ordenados por puntos descendente. */
-    List<Usuario> findAllByOrderByPuntosActualesDesc(Pageable pageable);
+    /** Ranking comunitario (RF17): usuarios de un rol ordenados por puntos descendente. */
+    List<Usuario> findAllByRolOrderByPuntosActualesDesc(String rol, Pageable pageable);
 
     /** Métricas admin (RF19): cuántas cuentas están verificadas/activas. */
     long countByEnabledTrue();
